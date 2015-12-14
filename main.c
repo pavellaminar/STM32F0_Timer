@@ -8,8 +8,8 @@
 void led_ini() {
   RCC->AHBENR |= RCC_AHBENR_GPIOCEN;
   GPIOC->MODER |= (GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0);
-	GPIOC->OTYPER = 0;
-	GPIOC->OSPEEDR = 0;
+  GPIOC->OTYPER = 0;
+  GPIOC->OSPEEDR = 0;
 }
 
 //--------- TIMER INI ----------
@@ -17,11 +17,9 @@ void timer_ini(){
   RCC->APB1ENR |= RCC_APB1ENR_TIM6EN;
   TIM6->ARR = AUTO_RELOAD;                      
   TIM6->PSC = PRESCALER;                     
-  //TIM6->CNT = RESET;  
-  TIM6->SR |= 0x1;
-  TIM6->DIER |= TIM_DIER_UIE;
-  TIM6->CR1 |= TIM_CR1_UDIS;
-  NVIC_EnableIRQ(TIM6_DAC_IRQn); //magic
+  TIM6->DIER = TIM_DIER_UIE;
+  TIM6->CR1 = TIM_CR1_UDIS;
+  NVIC_EnableIRQ(TIM6_DAC_IRQn); 
   TIM6->CR1 |= TIM_CR1_CEN;       
 }
 
