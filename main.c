@@ -1,8 +1,7 @@
 #include "stm32f0xx.h"
 
 #define PRESCALER       57005;         
-#define AUTO_RELOAD     210;         
-#define RESET           0x0;
+#define AUTO_RELOAD     420;         
 
 //--------- LED INI ----------
 void led_ini() {
