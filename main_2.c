@@ -36,7 +36,7 @@
       GPIOC->ODR |= GPIO_BSRR_BR_8;
       GPIOC->ODR |= GPIO_BSRR_BR_9;
     }
-    TIM6->SR |= ~TIM_SR_UIF;
+    TIM6->SR &= ~TIM_SR_UIF;
   }
 
   int main(void)
