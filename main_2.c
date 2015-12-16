@@ -26,15 +26,15 @@
 
   void TIM6_DAC_IRQHandler(void)
   {
-    if(~GPIOC->ODR) 
+    if(GPIOC->ODR !== 0) 
     { 
       GPIOC->ODR |= GPIO_ODR_8;
       GPIOC->ODR |= GPIO_ODR_9;
     }
     else 
     {
-      GPIOC->ODR |= GPIO_BSRR_BR_8;
-      GPIOC->ODR |= GPIO_BSRR_BR_9;
+      GPIOC->BRR |= GPIO_BRR_BR_8;  // 0x100
+      GPIOC->BRR |= GPIO_BRR_BR_9;  // 0x200
     }
     TIM6->SR &= ~TIM_SR_UIF;
   }
