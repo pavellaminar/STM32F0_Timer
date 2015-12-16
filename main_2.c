@@ -26,7 +26,7 @@
 
   void TIM6_DAC_IRQHandler(void)
   {
-    if(GPIOC->ODR !== 0) 
+    if ((GPIOC->ODR & GPIO_ODR_8)&(GPIOC->ODR & GPIO_ODR_9)) 
     { 
       GPIOC->ODR |= GPIO_ODR_8;
       GPIOC->ODR |= GPIO_ODR_9;
